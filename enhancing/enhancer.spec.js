@@ -17,9 +17,23 @@ describe('repairing item sets durability to 100', () => {
 
 describe('success increases item enhancement by 1, unless enhancement is at 20', () => {
     beforeEach(() => {
-        item = {}
+        item = {
+            enhancement: 20
+        }
     })
     it('should have value', () => {
-        expect(succeed(item.enhancement(5))).toEqual(6)
+        expect(succeed(item)).toEqual({enhancement: 20});
+    });
+});
+
+describe('fail decreases item durability and enhance', () => {
+    beforeEach(() => {
+        item = {
+            enhancement: 17,
+            durability: 67
+        }
+        it('should have value', () => {
+            expect(fail(item)).toEqual({enhancement: 16, durability: 57});
+        })
     })
 })
