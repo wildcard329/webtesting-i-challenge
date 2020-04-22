@@ -18,9 +18,10 @@ function fail(item) {
   let durability = item.durability;
   if (enhancement < 15) {
     durability -= 5;
-  } else if (enhancement < 19 && enhancement >= 15) {
+  } else if (enhancement < 17 && enhancement >= 15) {
     durability -= 10;
-  } else if (enhancement < 19 && enhancement > 16) {
+  } else if (enhancement < 19 && enhancement >= 17) {
+    durability -= 10;
     enhancement -= 1;
   }
   return { ...item, durability, enhancement };
@@ -33,5 +34,12 @@ function repair(item) {
 }
 
 function get(item) {
-  return { ...item };
+  let name = item.name;
+  let enhancement = item.enhancement;
+  if(enhancement === 0) {
+    name
+  } else if (enhancement > 0) {
+    name = `[+${enhancement}] ${name}`
+  }
+  return { ...item, name };
 }
