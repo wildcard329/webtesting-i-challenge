@@ -2,11 +2,15 @@ module.exports = {
   succeed,
   fail,
   repair,
-  get,
+  get
 };
 
 function succeed(item) {
-  return { ...item };
+  let enhancement = item.enhancement;
+  if (enhancement < 20) {
+    enhancement++
+  }
+  return { ...item, enhancement };
 }
 
 function fail(item) {
@@ -14,7 +18,9 @@ function fail(item) {
 }
 
 function repair(item) {
-  return { ...item };
+  let durability = item.durability;
+  durability = 100;
+  return { ...item, durability};
 }
 
 function get(item) {
